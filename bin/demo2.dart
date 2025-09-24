@@ -91,7 +91,7 @@ void main() {
     contador++;
   }
   double promedio = sumaTotal / productos.length;
-  print("📈 El precio promedio de los productos es: \$${promedio.toStringAsFixed(2)}");
+  print(" El precio promedio de los productos es: \$${promedio.toStringAsFixed(2)}");
 
 
   Map<String, dynamic> productoMasCaro = productos[0];
@@ -101,5 +101,5 @@ void main() {
     }
   }
   print(
-      "👑 El producto más caro es: ${productoMasCaro['nombre']} con un precio de \$${productoMasCaro['precio']}");
+      " El producto más caro es: ${productoMasCaro['nombre']} con un precio de \$${productoMasCaro['precio']}");
 }
