@@ -46,10 +46,13 @@ void ejemploFor() {
     print(item);
   }
 } */
-
 import 'dart:io';
 
 void main() {
+  gestionarProductos();
+}
+
+void gestionarProductos() {
   List<Map<String, dynamic>> productos = [];
 
   print("--- Ingresa los datos de 3 productos ---");
@@ -61,10 +64,10 @@ void main() {
     String nombre = stdin.readLineSync()!;
 
     stdout.write("Existencia: ");
-    int existencia = int.parse(stdin.readLineSync()!);
+    int existencia = int.tryParse(stdin.readLineSync()!) ?? 0;
 
     stdout.write("Precio: ");
-    double precio = double.parse(stdin.readLineSync()!);
+    double precio = double.tryParse(stdin.readLineSync()!) ?? 0.0;
 
     Map<String, dynamic> producto = {
       'nombre': nombre,
@@ -90,16 +93,19 @@ void main() {
     sumaTotal += productos[contador]['precio'];
     contador++;
   }
-  double promedio = sumaTotal / productos.length;
-  print(" El precio promedio de los productos es: \$${promedio.toStringAsFixed(2)}");
+  
+  double promedio = productos.isNotEmpty ? sumaTotal / productos.length : 0;
+  print("📈 El precio promedio de los productos es: \$${promedio.toStringAsFixed(2)}");
 
 
-  Map<String, dynamic> productoMasCaro = productos[0];
-  for (var producto in productos) {
-    if (producto['precio'] > productoMasCaro['precio']) {
-      productoMasCaro = producto;
+  if (productos.isNotEmpty) {
+    Map<String, dynamic> productoMasCaro = productos[0];
+    for (var producto in productos) {
+      if (producto['precio'] > productoMasCaro['precio']) {
+        productoMasCaro = producto;
+      }
     }
+    print(
+        "👑 El producto más caro es: ${productoMasCaro['nombre']} con un precio de \$${productoMasCaro['precio']}");
   }
-  print(
-      " El producto más caro es: ${productoMasCaro['nombre']} con un precio de \$${productoMasCaro['precio']}");
 }
