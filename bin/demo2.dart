@@ -95,7 +95,7 @@ void gestionarProductos() {
   }
   
   double promedio = productos.isNotEmpty ? sumaTotal / productos.length : 0;
-  print("📈 El precio promedio de los productos es: \$${promedio.toStringAsFixed(2)}");
+  print(" El precio promedio de los productos es: \$${promedio.toStringAsFixed(2)}");
 
 
   if (productos.isNotEmpty) {
@@ -106,6 +106,6 @@ void gestionarProductos() {
       }
     }
     print(
-        "👑 El producto más caro es: ${productoMasCaro['nombre']} con un precio de \$${productoMasCaro['precio']}");
+        " El producto más caro es: ${productoMasCaro['nombre']} con un precio de \$${productoMasCaro['precio']}");
   }
 }
